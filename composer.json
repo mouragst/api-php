@@ -1,0 +1,17 @@
+{
+    "name": "moura/api",
+    "autoload": {
+        "psr-4": {
+            "Api\\" : "api/",
+            "Entities\\": "entities/",
+            "Classes\\": "classes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Moura",
+            "email": "gustavodemoura.sbo@gmail.com"
+        }
+    ],
+    "require": {}
+}
