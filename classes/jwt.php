@@ -1,5 +1,10 @@
 <?php
 
+namespace Classes;
+
+use DomainException;
+use UnexpectedValueException;
+
 /**
  * JSON Web Token implementation
  *

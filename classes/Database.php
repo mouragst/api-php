@@ -62,7 +62,7 @@ class Database {
     }
 
     public function delete($id) {
-        $query = "DELETE FROM {$this->table} WHERE id = {$id}";
+        $query = "DELETE FROM {$this->table} WHERE id = {$id}"; 
 
         return $this->execute($query);
     }
@@ -72,7 +72,7 @@ class Database {
         $order = !empty($order) ? ' ORDER BY '.$order : '';
         $limit = !empty($order) ? ' LIMIT '.$limit : '';
 
-        $query = "SELECT {$fields} FROM {$this->table} {$where} {$order} {$limit}";
+        $query = "SELECT {$fields} FROM {$this->table}{$where}{$order}{$limit}";
 
         return $this->execute($query);
     }

@@ -61,7 +61,6 @@ class Client {
     }
 
     public static function getClient($where = null) {
-        $teste = (new Database('clientes'))->select($where)->fetchObject(self::class);
-        return $teste;
+        return (new Database('clientes'))->select($where)->fetchObject(self::class);
     }
 }

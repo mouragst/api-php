@@ -1,5 +1,7 @@
 <?php
 
+use Classes\Routes;
+
 require 'vendor/autoload.php';
 
 header('Access-Control-Allow-Origin: *');
@@ -7,14 +9,15 @@ header('Content-type: application/json');
 
 date_default_timezone_set("America/Sao_Paulo");
 
-if (isset($_GET['path'])) { $path = explode("/", $_GET['path']); } else { echo "Caminho não existe"; }
+$GLOBALS['secretJWT'] = '123456';
 
-if (isset($path[0])) { $api = $path[0]; } else { echo "Caminho não existe"; }
-if (isset($path[1])) { $acao = $path[1]; } else { $acao = ''; }
-if (isset($path[2])) { $parametro = $path[2]; } else { $parametro = ''; }
+# Routes
 
-$method = $_SERVER['REQUEST_METHOD'];
-
-include_once "api/clientes/clientes.php";
-include_once "classes/Database.php";
-include_once "entities/Client.php";
+$route = new Routes;
+$route->add('POST', '/users/login', 'Users::login', false);
+$route->add('GET', '/client/list', 'ClientApi::getAllClients', true);
+$route->add('GET', '/client/list/[PARAM]', 'ClientApi::getClient', true);
+$route->add('POST', '/client/add', 'ClientApi::addClient', true);
+$route->add('PUT', '/client/update/[PARAM]', 'ClientApi::updateClient', true);
+$route->add('DELETE', '/client/delete/[PARAM]', 'ClientApi::deleteClient', true);
+$route->path($_GET['path']);
